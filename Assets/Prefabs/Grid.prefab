@@ -377,6 +377,4 @@ MonoBehaviour:
   roomsWide: 4
   roomsTall: 4
   tiles:
-  - {fileID: 11400000, guid: fdbf826be264cc244a18af680831e0db, type: 2}
-  - {fileID: 11400000, guid: 46d4f5ff29373d8468f8020dff204f68, type: 2}
-  - {fileID: 11400000, guid: 4d2d13a4cd67b4148a86fb38ec9c06c4, type: 2}
+  - {fileID: 11400000, guid: e6bd1888c842af14fb1cf540093228f7, type: 2}
