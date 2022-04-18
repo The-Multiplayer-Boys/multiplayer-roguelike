@@ -173,7 +173,7 @@ public class SFRenderer : MonoBehaviour {
 
 		// Consoles or new platforms may need to be added here too.
 		UV_STARTS_AT_TOP = (
-			graphicsAPI == UnityEngine.Rendering.GraphicsDeviceType.Direct3D9 ||
+			// graphicsAPI == UnityEngine.Rendering.GraphicsDeviceType.Direct3D9 ||
 			graphicsAPI == UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 ||
 			graphicsAPI == UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 ||
 			graphicsAPI == UnityEngine.Rendering.GraphicsDeviceType.Metal

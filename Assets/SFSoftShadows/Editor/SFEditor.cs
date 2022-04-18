@@ -262,7 +262,7 @@ public class SFPolygonEditor : SFAbstractEditor {
 				SFPolygonEditor.inEditMode = false;
 			}
 			
-			if(poly.GetComponent<PolygonCollider2D>() || poly.GetComponent<BoxCollider2D>()){
+			if(poly.GetComponent<PolygonCollider2D>() || poly.GetComponent<BoxCollider2D>() || poly.GetComponent<CompositeCollider2D>()){
 				Undo.RecordObjects(this.targets, "Copy from Collider");
 				if(GUILayout.Button("Copy from Collider")){
 					foreach(SFPolygon t in this.targets){

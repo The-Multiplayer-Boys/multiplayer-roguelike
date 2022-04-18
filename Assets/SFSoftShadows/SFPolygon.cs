@@ -136,6 +136,7 @@ public class SFPolygon : MonoBehaviour {
 	public void CopyFromCollider(Collider2D collider){
 		var poly = collider as PolygonCollider2D;
 		var box = collider as BoxCollider2D;
+		var composite = collider as CompositeCollider2D;
 		if(poly){
 			this.looped = true;
 			var count = this.pathCount = poly.pathCount;
@@ -150,7 +151,21 @@ public class SFPolygon : MonoBehaviour {
 			_UpdateBounds();
 		} else if(box){
 			SetBoxVerts(box.offset - 0.5f*box.size, box.offset + 0.5f*box.size);
-		} else {
+		} else if (composite) {
+			this.looped = true;
+			var count = this.pathCount = composite.pathCount;
+
+			for(int p = 0; p < count; p++){
+				Vector2[] pathVertices = new Vector2[composite.GetPathPointCount(p)];
+				var path = composite.GetPath(p, pathVertices);
+				for(int i = 0; i < path; i++) pathVertices[i] = pathVertices[i] + composite.offset;
+				System.Array.Reverse(pathVertices);
+				this.SetPathRaw(p, pathVertices);
+			}
+
+			_UpdateBounds();
+		}
+		else {
 			Debug.LogWarning("CopyFromCollider() only works with polygon and box colliders.");
 		}
 	}
