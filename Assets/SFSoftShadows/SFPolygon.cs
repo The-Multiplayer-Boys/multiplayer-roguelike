@@ -10,7 +10,7 @@ public class SFPolygon : MonoBehaviour {
 		if (!_t) _t = this.transform;
 		return _t.localToWorldMatrix;
 	}
-	
+
 	private void PathBounds(Vector2[] path, int i0, ref float l, ref float b, ref float r, ref float t){
 		for(var i = i0; i < path.Length; i++){
 			var v = path[i];
@@ -131,6 +131,11 @@ public class SFPolygon : MonoBehaviour {
 
 	private void Start(){
 		_UpdateBounds();
+		
+		CompositeCollider2D coco = GameObject.Find("Walls").GetComponent<CompositeCollider2D>();
+		if(coco != null) {
+			CopyFromCollider(coco);
+		}
 	}
 	
 	public void CopyFromCollider(Collider2D collider){
